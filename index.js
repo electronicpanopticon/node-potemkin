@@ -1,8 +1,14 @@
-
+const fs = require('fs');
 
 const potemkin = {
-  isDirectory() {
-    return true;
+  isDirectory(filePath) {
+    fs.lstat(filePath, (err, stats) => {
+
+      if (err)
+        return console.log(err);
+
+      return stats.isDirectory();
+    })
   }
 }
 
